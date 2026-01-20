@@ -15,5 +15,5 @@ const desc = Color(0xff8787A1);
 const card_stroke = Color(0xffF2F2F2);
 const caption = Color(0xff939396);
 const error_textfield = Color(0xffFFEBEB);
-// const  = Color(0xff);
+const icon = Color(0xffB8C1CC);
 // const  = Color(0xff);

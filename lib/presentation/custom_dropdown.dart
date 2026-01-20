@@ -8,15 +8,15 @@ class CustomDropDown extends StatefulWidget {
   final double borderRadius; // Закругление
   final String text; // Заголовок
   final List<String> items; // Элементы
-  final String? selectedValue; // Выбранное значение
+  final double margin; //
+  final double padding; //
 
   const CustomDropDown({
     super.key,
     required this.color,
     required this.borderRadius,
     required this.text,
-    required this.items,
-   this.selectedValue,
+    required this.items, required this.margin, required this.padding,
   });
 
   @override
@@ -24,25 +24,33 @@ class CustomDropDown extends StatefulWidget {
 }
 
 class _CustomDropDownState extends State<CustomDropDown> {
+  String? selectedValue; // Выбранное значение
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.color,
+      margin: EdgeInsets.symmetric(horizontal: widget.margin),
+      padding: EdgeInsets.symmetric(horizontal: widget.padding),
+      decoration: BoxDecoration(color: widget.color, borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius))),
       child: DropdownButton(
-        value: widget.selectedValue,
+        dropdownColor: widget.color,
+        isExpanded: true,
+        value: selectedValue,
         hint: Text(
           widget.text,
           style: headlineRegular.copyWith(color: caption),
         ),
         items: widget.items
             .map(
-              (item) =>
-                  DropdownMenuItem(child: Text(item, style: headlineRegular)),
+              (String item) => DropdownMenuItem(
+                value: item,
+                child: Text(item, style: headlineRegular),
+              ),
             )
             .toList(),
-        onChanged: (value) {
+        onChanged: (String? newValue) {
           setState(() {
-            value = widget.selectedValue;
+            selectedValue = newValue;
           });
         },
       ),

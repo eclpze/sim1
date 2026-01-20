@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sumilyaqu/presentation/colors.dart' show desc, error, caption;
 import 'package:sumilyaqu/presentation/custom_icon.dart';
 import 'package:sumilyaqu/presentation/styles.dart';
 
-import 'colors.dart' show desc;
+import 'colors.dart' show desc, caption, error_textfield, error;
 
 // Губайдуллина Камилла, 19.01.2026, 14:53, текстовое поле для проекта
 
@@ -84,7 +83,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               hintText: widget.hintText,
               hintStyle: textRegular.copyWith(color: caption),
               filled: true,
-              fillColor: widget.color,
+              fillColor: hasError ? error_textfield : widget.color,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(widget.borderRadius),
@@ -110,7 +109,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             Row(
               children: [
                 Text(
-                  widget.error!,
+                  widget.error,
                   style: captionRegular.copyWith(color: error),
                 ),
               ],

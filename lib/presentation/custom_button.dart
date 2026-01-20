@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sumilyaqu/presentation/colors.dart';
-import 'package:sumilyaqu/presentation/custom_icon.dart';
 import 'package:sumilyaqu/presentation/styles.dart';
 
 //Губайдуллина Камилла, 19.01.2026, 15:30, кнопка для проекта
@@ -121,14 +120,11 @@ class _CustomButtonState extends State<CustomButton> {
         style: ElevatedButton.styleFrom(
           minimumSize: Size(widget.width, widget.height),
           fixedSize: Size(widget.width, widget.height),
-          backgroundColor: widget.isSelected! ? widget.color : input_icon,
+          backgroundColor: widget.isSelected! ? widget.color : input_bg,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(widget.borderRadius),
             ),
-            side: widget.type == ButtonType.secondary
-                ? BorderSide(color: widget.border!, width: 1.5)
-                : BorderSide.none,
           ),
         ),
         child: Text(

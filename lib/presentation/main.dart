@@ -57,7 +57,10 @@ class _TestState extends State<Test> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Row(
-                      children: [Text(title[index]), SizedBox(width: 10)],
+                      children: [Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(title[index], style: styles[index],),
+                      ), ],
                     );
                   },
                   itemCount: title.length,
@@ -89,14 +92,15 @@ class _TestState extends State<Test> {
                 borderRadius: 10,
                 padding: 10,
               ),
-              // SizedBox(height: 10),
-              // CustomDropDown(
-              //   color: white,
-              //   borderRadius: 10,
-              //   text: 'Пол',
-              //   items: ['Женский', 'Мужской'],
-              //   selectedValue: '',
-              // ),
+              SizedBox(height: 10),
+              CustomDropDown(
+                color: white,
+                borderRadius: 10,
+                text: 'Пол',
+                items: ['Женский', 'Мужской'],
+                margin: 10,
+                padding: 15,
+              ),
               SizedBox(height: 10),
               CustomTextField(
                 type: TextFieldType.text,
@@ -219,7 +223,7 @@ class _TestState extends State<Test> {
                     CustomButton(
                       type: ButtonType.chips,
                       isSelected: false,
-                      color: accent,
+                      color: input_bg,
                       colorText: white,
                       text: 'Популярные',
                       onPressed: () {},
@@ -275,15 +279,19 @@ class _TestState extends State<Test> {
         ),
       ),
       bottomNavigationBar: CustomTabBar(
-        icons: ['assets/map.png', 'assets/map.png'],
-        title: ['asasasa', 'assets/home.svg'],
+        icons: [
+          'assets/images/home.png',
+          'assets/images/catalog.png',
+          'assets/images/project.png',
+          'assets/images/profile.png',
+        ],
+        title: ['Главная', 'Каталог', 'Проекты', 'Профиль'],
         color: white,
         selectedIndex: selValue,
         onPressed: (index) {
           setState(() {
             selValue = index;
           });
-
         },
       ),
     );
